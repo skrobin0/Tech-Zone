@@ -1,0 +1,38 @@
+import React from "react";
+import "./CartContainer.css";
+
+const CartContainer = (props) => {
+  console.log(props.shoppingCart);
+  const { shoppingCart } = props;
+
+
+  let totalQuantity = 0;
+  let total = 0;
+  for (const product of shoppingCart) {
+    if(!product.quantity){
+      product.quantity = 1;
+    }
+    total = total + product.price * product.quantity;
+    totalQuantity = totalQuantity + product.quantity;
+  }
+
+  const shipping = total > 0 ? 10 : 0;
+
+  const totalBeforeTax = total + shipping;
+  const tax = (total + shipping) * 0.5;
+  const grandTotal = total + tax + shipping;
+  return (
+    <div className="card shadow">
+      <h4> Order Summary </h4>
+      <h5>Item order : {totalQuantity}</h5>
+      <br />
+      <p> Total : {total} </p>
+      <p> Shipping & Handling: {shipping} </p>
+      <p> Total before tax: {totalBeforeTax} </p>
+      <p> Estimated Tax: {tax} </p>
+      <p>gt:{grandTotal}</p>
+    </div>
+  );
+};
+
+export default CartContainer;
