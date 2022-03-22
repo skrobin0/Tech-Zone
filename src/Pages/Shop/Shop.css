@@ -3,3 +3,20 @@
     /* margin-right: 2px; */
     margin-left: 30px;
 }
+
+.search-container{
+    background-color: rgba(0, 0, 0, 0.575);
+   
+    padding: 20px;
+    margin-bottom: 3px;
+    display: flex;
+
+}
+
+.search-container input{
+    width: 75%;
+    border-radius: 5px;
+   padding: 5px;
+   margin-left: 90px;
+
+}

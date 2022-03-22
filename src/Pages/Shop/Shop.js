@@ -7,20 +7,23 @@ import {
   addToLocalStorage,
   getStoredCart,
 } from "../Local-Storage/LocalStorage";
+import Header from "../Shared/Header/Header";
 
 const Shop = () => {
   const [products, setProducts] = useState([]);
   const [shoppingCart, setShoppingCart] = useState([]);
+  const [searchProduct, setSearchProduct] = useState([]);
 
   useEffect(() => {
     fetch(
       "https://raw.githubusercontent.com/ProgrammingHero1/ema-john-simple-resources/master/fakeData/products.JSON"
     )
       .then((res) => res.json())
-      .then((data) => setProducts(data));
+      .then((data) => {
+        setProducts(data);
+        setSearchProduct(data);
+      });
   }, []);
-
-
 
   //cart function--- local storage
   useEffect(() => {
@@ -30,19 +33,17 @@ const Shop = () => {
       for (const key in savedCart) {
         console.log(key, savedCart[key]);
         const savedProduct = products.find((product) => product.key === key);
-      
+
         // console.log(savedProduct);
-        if(savedProduct){
+        if (savedProduct) {
           const quantity = savedCart[key];
           savedProduct.quantity = quantity;
-          storageCart.push(savedProduct)
-         
+          storageCart.push(savedProduct);
         }
       }
-      setShoppingCart(storageCart)
+      setShoppingCart(storageCart);
     }
   }, [products]);
-
 
   const addToCard = (products) => {
     //  console.log(products);
@@ -53,26 +54,48 @@ const Shop = () => {
     addToLocalStorage(products.key);
   };
 
+  //Search--box--function
+
+  const handleSearch = (event) => {
+    const searchText = event.target.value;
+    const matchProducts = products.filter((product) =>
+      product.name.toLowerCase().includes(searchText.toLowerCase())
+    );
+    setSearchProduct(matchProducts);
+  };
+
   return (
-    <Container fluid>
-      <Row>
-        <Col md={8} className="shop-container">
-          <h4> Products : {products.length} </h4>
-          {products.map((product) => (
-            <ProductContainer
-              key={product.key}
-              product={product}
-              addToCard={addToCard}
-            ></ProductContainer>
-          ))}
-        </Col>
-        <Col md={3}>
-          {/* <h4> Order Summary </h4>
+    <div>
+      <Header></Header>
+      <Container fluid>
+        <Row>
+          <Col className="search-container">
+            <input
+              type="text"
+              placeholder="search product"
+              onChange={handleSearch}
+            />
+          </Col>
+        </Row>
+        <Row>
+          <Col md={8} className="shop-container">
+            <h4> Products : {products.length} </h4>
+            {searchProduct.map((product) => (
+              <ProductContainer
+                key={product.key}
+                product={product}
+                addToCard={addToCard}
+              ></ProductContainer>
+            ))}
+          </Col>
+          <Col md={3}>
+            {/* <h4> Order Summary </h4>
           <h5>Item order : {shoppingCart.length}</h5> */}
-          <CartContainer shoppingCart={shoppingCart}></CartContainer>
-        </Col>
-      </Row>
-    </Container>
+            <CartContainer shoppingCart={shoppingCart}></CartContainer>
+          </Col>
+        </Row>
+      </Container>
+    </div>
   );
 };
 

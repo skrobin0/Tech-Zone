@@ -1,10 +1,11 @@
 import React from "react";
 import { Button } from "react-bootstrap";
+import Rating from "react-rating";
 import "./ProductContainer.css";
 
 const ProductContainer = (props) => {
-  const { name, img, price, stock, seller } = props.product;
-//   console.log(props);
+  const { name, img, price, stock, seller, star } = props.product;
+  //   console.log(props);
 
   return (
     <div className="product-con">
@@ -17,10 +18,22 @@ const ProductContainer = (props) => {
           <strong>by: {seller}</strong>
         </p>
         <p className="product-price">price: {price}</p>
+
         <p>
           <small>only {stock} left in stock - order soon</small>
         </p>
-        <Button onClick={() => props.addToCard(props.product)} variant="btn btn-outline-success">
+        <Rating
+          readonly
+          className="pb-2"
+          initialRating={star}
+          emptySymbol="fa fa-star-o text-success"
+          fullSymbol="fa fa-star text-success"
+        ></Rating>
+        <br />
+        <Button
+          onClick={() => props.addToCard(props.product)}
+          variant="btn btn-outline-success"
+        >
           <span>
             <i className="fa-solid fa-cart-plus"></i>
           </span>{" "}
