@@ -1,0 +1,21 @@
+.background-img {
+    background-image: url(../../../Images/back.jpg);
+    -webkit-background-size: cover;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    height: 80vh;
+    width: 100%;
+    filter: blur(5px);
+}
+
+
+
+.background-text h1 {
+    font-size: 40px;
+    /* margin-bottom: 0;  */
+    color: black;
+    padding-top: 120px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}

@@ -2,12 +2,16 @@ import React from "react";
 import { Button } from "react-bootstrap";
 import Rating from "react-rating";
 import "./ProductContainer.css";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const ProductContainer = (props) => {
   const { name, img, price, stock, seller, star } = props.product;
+  AOS.init();
   //   console.log(props);
 
   return (
+    <div  data-aos="flip-left" data-aos-delay="100">
     <div className="product-con">
       <div>
         <img src={img} alt="" />
@@ -40,6 +44,7 @@ const ProductContainer = (props) => {
           add to card
         </Button>
       </div>
+    </div>
     </div>
   );
 };

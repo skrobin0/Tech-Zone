@@ -1,11 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Button } from "react-bootstrap";
 import "./HomeShopDetail.css";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import { Link } from "react-router-dom";
 
 const HomeShopDetail = (props) => {
+  useEffect(() => {
+    AOS.init();
+  }, []);
+
   const { name, img, price, stock, seller } = props.product;
   return (
-    <div>
+    <div data-aos="flip-left" data-aos-delay="100">
       <div className="product-con">
         <div>
           <img src={img} alt="" />
@@ -22,15 +29,14 @@ const HomeShopDetail = (props) => {
           </p>
 
           <br />
-          <Button
-            onClick={() => props.addToCard(props.product)}
-            variant="btn btn-outline-success"
-          >
-            <span>
-              <i className="fa-solid fa-cart-plus"></i>
-            </span>{" "}
-            add to card
-          </Button>
+          <Link to="/shop">
+            <Button variant="btn btn-outline-success">
+              <span>
+                <i className="fa-solid fa-cart-plus"></i>
+              </span>{" "}
+              More Details
+            </Button>
+          </Link>
         </div>
       </div>
     </div>

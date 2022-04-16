@@ -1,9 +1,12 @@
-import React from "react";
+
 import { Button } from "react-bootstrap";
 
 const ReviewContainer = (props) => {
   const { name, img, price, quantity, key } = props.product;
   const { handleProductRemove } = props;
+
+  
+
   return (
     <div>
       <div className="product-con">
@@ -16,6 +19,8 @@ const ReviewContainer = (props) => {
             <strong>Quantity : {quantity}</strong>
           </p>
           <p className="product-price">price: {price}</p>
+
+         
 
           <Button
             onClick={() => handleProductRemove(key)}

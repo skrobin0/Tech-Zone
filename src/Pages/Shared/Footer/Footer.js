@@ -7,23 +7,24 @@ const Footer = () => {
     <div>
       
         <Container fluid className="bg-dark">
+          <Container>
           <Row>
             <Col md={4} className="p-5">
               <div>
-                <p className="fs-5 text-info">
-                  <i className="fa-2x fab fa-gripfire"></i> Greninja Trip <br />{" "}
+                <p className="fs-5 text-white">
+                  <i className="fa-2x fab fa-gripfire"></i> Tech Zone <br />{" "}
                   <small className="lead brand">
-                    # marge with nature
+                    # stay with technology
                   </small>
                 </p>
               </div>
               <br />
-              <p className="text-info">
+              <p className="text-white">
                 Better Arrangements <br /> Ensured
                 Safety <br /> Maximum Comfortness <br />
               </p>
             </Col>
-            <Col md={4} className="p-5 text-info">
+            <Col md={4} className="p-5 text-white">
               <h5>
                 <i className="fas fa-2x fa-location-arrow"></i> Our Head Office
               </h5>
@@ -35,7 +36,7 @@ const Footer = () => {
                 Email Us: support@greninja.com <br /> Phone: +183 80 01 3921
               </p>
             </Col>
-            <Col md={4} className="p-5 text-info">
+            <Col md={4} className="p-5 text-white">
               <h5>
                 <i className="far fa-2x fa-clock"></i> Working Time
               </h5>
@@ -48,8 +49,9 @@ const Footer = () => {
             </Col>
           </Row>
           <p className="text-center text-secondary mb-0 copyright fs-5">
-            Greninja Trip &copy; All Rights Reserved | | Saidul Karim | | 2022
+            Tech Zone &copy; All Rights Reserved | | Saidul Karim | | 2022
           </p>
+          </Container>
         </Container>
       </div>
   );
